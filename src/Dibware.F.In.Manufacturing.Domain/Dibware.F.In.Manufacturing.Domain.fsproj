@@ -7,14 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Types\Materials.fs" />
     <Compile Include="Types\Mining.fs" />
-    <Compile Include="Types\Data.fs" />
-    <Compile Include="Operations\Mining.fs" />
+    <Compile Include="Types\Terraforming.fs" />
+    <Compile Include="Generators\Terraforming.fs" />
     <Compile Include="Operations\Smelting.fs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Generators\" />
+    <Compile Include="Operations\Mining.fs" />
   </ItemGroup>
 
 </Project>

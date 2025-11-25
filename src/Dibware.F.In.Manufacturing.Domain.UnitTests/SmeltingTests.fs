@@ -2,7 +2,8 @@
 
 open Microsoft.VisualStudio.TestTools.UnitTesting
 open Dibware.F.In.Manufacturing.Domain.Operations
-open Dibware.F.In.Manufacturing.Domain.Data
+open Dibware.F.In.Manufacturing.Domain.Types.Mining
+open Dibware.F.In.Manufacturing.Domain.Types.Materials
 
 [<TestClass>]
 type SmeltingTests () =

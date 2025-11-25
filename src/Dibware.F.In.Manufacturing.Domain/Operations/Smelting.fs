@@ -1,6 +1,8 @@
 namespace Dibware.F.In.Manufacturing.Domain.Operations
 
-open Dibware.F.In.Manufacturing.Domain.Data
+
+open Dibware.F.In.Manufacturing.Domain.Types.Materials
+open Dibware.F.In.Manufacturing.Domain.Types.Mining
 
 /// <summary>
 /// Describes operations related to smelting plants.

@@ -7,6 +7,7 @@ type Rock =
     | IronImpregnatedRock
     | CoalimpregnatedRock
     | CopperImpregnatedRock
+    | Shale
 
 /// <summary>
 /// Describes different types of ores used as raw materials.
