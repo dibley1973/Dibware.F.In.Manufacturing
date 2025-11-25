@@ -1,6 +1,17 @@
 ﻿namespace Dibware.F.In.Manufacturing.Domain.Data
 
 /// <summary>
+/// Describes different types of ores used as raw materials.
+/// </summary>
+type Ore = 
+    | Iron
+    | Copper
+    | Aluminum
+    | Gold
+    | Silver
+
+
+/// <summary>
 /// Describes a raw, unprocessed material used in manufacturing.
 /// </summary>
 type RawMaterial = {
@@ -14,17 +25,28 @@ type RawMaterial = {
 /// Describes the type of raw, unprocessed material
 /// </summary>
 type RawMaterialType =
-    | Ore
+    | Ore of Ore
     | Oil
     | Gas
     | Lumber
 
+
+type ProcessedMaterialType =
+    | MetalIngot
+    | PlasticPellets
+    | WoodPlanks
+    | CompositeFibers
+
 /// <summary>
 /// Describes a material that can be used in manufacturing, which can be either raw or processed / refined.
 /// </summary>
-type ProcessedMaterial = {
-    Name: string
-}
+type Material = { Name : string }
+
+type ProcessedMaterial =
+    | Iron of Material
+    | Steel of Material
+    | Plastic of Material
+
 
 /// <summary>
 /// Describes a component manufacturedfrom processed materials.
