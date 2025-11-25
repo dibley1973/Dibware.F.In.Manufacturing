@@ -35,7 +35,15 @@ type ProcessedMaterialType =
     | WoodPlanks
     | CompositeFibers
 
-    /// <summary>
+/// <summary>
+/// Describes a mining operation that extracts raw materials from the earth.
+/// </summary>
+type Mine = 
+    | CoalMine
+    | CopperMine
+    | IronOreMine
+
+/// <summary>
 /// Describes plant that Smelts ores into processed materials.
 /// </summary>
 type SmeltingPlant = 

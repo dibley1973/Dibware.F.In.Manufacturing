@@ -1,8 +1,7 @@
 ﻿namespace Dibware.F.In.Manufacturing.Domain.UnitTests
 
-open System
 open Microsoft.VisualStudio.TestTools.UnitTesting
-open Dibware.F.In.Manufacturing.Domain.Plants
+open Dibware.F.In.Manufacturing.Domain.Operations
 open Dibware.F.In.Manufacturing.Domain.Data
 
 [<TestClass>]

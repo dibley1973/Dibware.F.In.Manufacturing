@@ -1,4 +1,4 @@
-namespace Dibware.F.In.Manufacturing.Domain.Plants
+namespace Dibware.F.In.Manufacturing.Domain.Operations
 
 open Dibware.F.In.Manufacturing.Domain.Data
 
