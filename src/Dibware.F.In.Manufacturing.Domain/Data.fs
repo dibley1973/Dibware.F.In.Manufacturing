@@ -39,7 +39,7 @@ type ProcessedMaterialType =
 /// Describes plant that Smelts ores into processed materials.
 /// </summary>
 type SmeltingPlant = 
-    | IronOreSmelter
+    | IronOreSmelter // of string
 
 /// <summary>
 /// Describes a material that can be used in manufacturing, which can be either raw or processed / refined.
