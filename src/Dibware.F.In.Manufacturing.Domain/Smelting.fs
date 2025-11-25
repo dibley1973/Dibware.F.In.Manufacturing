@@ -10,7 +10,7 @@ module Smelting =
     /// <summary>
     /// Gets the smelting plant for a given ore type.
     /// </summary>
-    let getSmeltingPlantForOre (oreType: Ore) : SmeltingPlant option =
+    let public getSmeltingPlantForOre (oreType: Ore) : SmeltingPlant option =
         match oreType with
         | Ore.IronOre -> IronOreSmelter |> Some
         | _ -> None 
