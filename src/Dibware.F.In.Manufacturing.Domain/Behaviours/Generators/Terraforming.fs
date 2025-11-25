@@ -1,4 +1,4 @@
-namespace Dibware.F.In.Manufacturing.Domain.Behaviours.Generators.Terraforming
+namespace Dibware.F.In.Manufacturing.Domain.Behaviours.Generators
 
 open Dibware.F.In.Manufacturing.Domain.Types.Terraforming
 open Dibware.F.In.Manufacturing.Domain.Types.Mining
