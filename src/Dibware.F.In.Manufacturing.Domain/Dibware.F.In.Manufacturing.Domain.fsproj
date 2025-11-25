@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Include="Data.fs" />
+    <Compile Include="Smelting.fs" />
   </ItemGroup>
 
 </Project>

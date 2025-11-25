@@ -4,12 +4,11 @@
 /// Describes different types of ores used as raw materials.
 /// </summary>
 type Ore = 
-    | Iron
-    | Copper
-    | Aluminum
-    | Gold
-    | Silver
-
+    | IronOre
+    | CopperOre
+    | AluminumOre
+    | GoldOre
+    | SilverOre
 
 /// <summary>
 /// Describes a raw, unprocessed material used in manufacturing.
@@ -30,12 +29,17 @@ type RawMaterialType =
     | Gas
     | Lumber
 
-
 type ProcessedMaterialType =
     | MetalIngot
     | PlasticPellets
     | WoodPlanks
     | CompositeFibers
+
+    /// <summary>
+/// Describes plant that Smelts ores into processed materials.
+/// </summary>
+type SmeltingPlant = 
+    | IronOreSmelter
 
 /// <summary>
 /// Describes a material that can be used in manufacturing, which can be either raw or processed / refined.
@@ -70,9 +74,6 @@ type Product = {
     Name: string
     Components: Component list
 }
-
-
-
 
 type MaterialType =
     | Metal
