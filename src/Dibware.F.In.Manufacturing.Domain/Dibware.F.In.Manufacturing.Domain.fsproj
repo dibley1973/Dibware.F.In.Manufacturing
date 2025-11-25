@@ -10,9 +10,9 @@
     <Compile Include="Types\Materials.fs" />
     <Compile Include="Types\Mining.fs" />
     <Compile Include="Types\Terraforming.fs" />
+    <Compile Include="Behaviours\Operations\Smelting.fs" />
+    <Compile Include="Behaviours\Operations\Mining.fs" />
     <Compile Include="Behaviours\Generators\Terraforming.fs" />
-    <Compile Include="Operations\Smelting.fs" />
-    <Compile Include="Operations\Mining.fs" />
   </ItemGroup>
 
 </Project>

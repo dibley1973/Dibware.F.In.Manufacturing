@@ -1,4 +1,4 @@
-namespace Dibware.F.In.Manufacturing.Domain.Operations
+namespace Dibware.F.In.Manufacturing.Domain.Behaviours.Operations
 
 open Dibware.F.In.Manufacturing.Domain.Types.Mining
 
