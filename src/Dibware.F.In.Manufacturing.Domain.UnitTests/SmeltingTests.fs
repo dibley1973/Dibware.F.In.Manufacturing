@@ -11,7 +11,7 @@ type SmeltingTests () =
     [<TestMethod>]
     member this.getSmeltingPlantForOre_WithSupportedOre_ReturnsSmelter () =
         // Arrange
-        let expected = SmeltingPlant.IronOreSmelter
+        let expected = (SmeltingPlant.IronOreSmelter|> Some)
         let ironOre = Ore.IronOre 
 
         // Act
@@ -19,16 +19,28 @@ type SmeltingTests () =
 
         // Assert
         Assert.IsTrue(actual.IsSome);
-        Assert.AreEqual((expected |> Some), actual);
+        Assert.AreEqual(expected, actual);
 
     [<TestMethod>]
     member this.getSmeltingPlantForOre_WithunsupportedOre_ReturnsNone () =
         // Arrange
-        //let expected = SmeltingPlant.IronOreSmelter
-        let ironOre = Ore.GoldOre
+        let goldOre = Ore.GoldOre
 
         // Act
-        let actual = Smelting.getSmeltingPlantForOre(ironOre)
+        let actual = Smelting.getSmeltingPlantForOre(goldOre)
 
         // Assert
         Assert.IsTrue(actual.IsNone);
+
+    [<TestMethod>]
+    member this.getSmeltingPlantForIronOre_ReturnsIronOreSmelter () =
+        // Arrange
+        let expected = (SmeltingPlant.IronOreSmelter |> Some)
+        
+        // Act
+        let actual = Smelting.ironOreSmeltingPlant
+
+        // Assert
+        Assert.IsTrue(actual.IsSome);
+        Assert.AreEqual(expected, actual);
+
