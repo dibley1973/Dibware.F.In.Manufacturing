@@ -11,10 +11,15 @@ module Mining =
     /// </summary>
     let public getMiningPlantForOre (oreType: Ore) : Mine option =
         match oreType with
-        | Ore.IronOre -> Some IronOreMine
-        | Ore.Coal -> Some CoalMine
-        | Ore.CopperOre -> Some CopperMine
+        | Ore.IronOre -> IronOreMine |> Some
+        | Ore.Coal -> CoalMine |> Some
+        | Ore.CopperOre -> CopperMine |> Some
         //| Ore.AluminumOre -> Some //"Aluminum Ore Mine"
         //| Ore.GoldOre -> Some //"Gold Ore Mine"
         //| Ore.SilverOre -> Some //"Silver Ore Mine"
         | _ -> None
+
+    /// <summary>
+    /// Gets the mining plant for Iron Ore.
+    /// </summary>
+    let getIronOreMine = getMiningPlantForOre Ore.IronOre

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Compile Include="BehaviourTests\GeneratorTests\TerraformingTests.fs" />
+    <Compile Include="BehaviourTests\OperationsTests\MiningTests.fs" />
     <Compile Include="BehaviourTests\OperationsTests\SmeltingTests.fs" />
     <Compile Include="MSTestSettings.fs" />
   </ItemGroup>

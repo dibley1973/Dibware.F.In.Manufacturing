@@ -20,7 +20,7 @@ module Smelting =
     /// <summary>
     /// Gets the smelting plant for Iron Ore.
     /// </summary>
-    let ironOreSmeltingPlant = getSmeltingPlantForOre Ore.IronOre
+    let getIronOreSmeltingPlant = getSmeltingPlantForOre Ore.IronOre
 
     /// <summary>
     /// A function that tries to smelt the specified ore using the specified smelting plant.
