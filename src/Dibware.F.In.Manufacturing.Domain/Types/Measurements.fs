@@ -30,3 +30,24 @@ type Coordinate3D = {
     Y: int
     Z: int
 }
+
+/// <summary>
+/// Represents a size in 2 Dimensions.
+/// </summary>
+type Size2D = {
+    /// <summary>
+    /// The length of the X-axis of an object.
+    /// </summary>
+    X: int
+
+    /// <summary>
+    /// The length of the Y-axis of an object.
+    /// </summary>
+    Y: int
+}
+
+type Size3D = {
+    X: int
+    Y: int
+    Z: int
+}
