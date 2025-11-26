@@ -5,7 +5,7 @@ namespace Dibware.F.In.Manufacturing.Domain.Types.Mining
 /// </summary>
 type Rock = 
     | IronImpregnatedRock   // Contains iron ore
-    | CoalimpregnatedRock   // Contains coal
+    | CoalImpregnatedRock   // Contains coal
     | CopperImpregnatedRock // Contains copper ore
     | GasShale              // Sedimentary rock that contains natural gas
     | OilShale              // Sedimentary rock that contains oil 
