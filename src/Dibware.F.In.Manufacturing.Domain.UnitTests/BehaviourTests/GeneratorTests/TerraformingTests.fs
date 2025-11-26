@@ -14,12 +14,12 @@ type TerraformingTests () =
         let width = 10
 
         // Act
-        let actual = terraformRandomLand(length, width)
+        let actual = terraformRandomLandWithDimensions length width
         
         // Assert
         Assert.IsNotNull(actual)
-        Assert.AreEqual(length, actual.Grid.GetLength(0))
-        Assert.AreEqual(width, actual.Grid.GetLength(1))
+        Assert.AreEqual(length, actual.Map.GetLength(0))
+        Assert.AreEqual(width, actual.Map.GetLength(1))
 
     [<TestMethod>]
     member public this.terraformBiasedLand_WithValidDimensions_ReturnsGameArea () =
@@ -32,8 +32,8 @@ type TerraformingTests () =
         
         // Assert
         Assert.IsNotNull(actual)
-        Assert.AreEqual(length, actual.Grid.GetLength(0))
-        Assert.AreEqual(width, actual.Grid.GetLength(1))
+        Assert.AreEqual(length, actual.Map.GetLength(0))
+        Assert.AreEqual(width, actual.Map.GetLength(1))
 
     [<TestMethod>]
     member public this.terraformBiasedLand_With70PercentPreferredRock_ReturnsGameAreaContainsAtLeast70OfPreferredRockElements () =
