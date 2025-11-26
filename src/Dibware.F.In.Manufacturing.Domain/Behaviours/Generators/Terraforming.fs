@@ -29,7 +29,7 @@ module Terraforming =
     /// <param name="length">The length of the land.</param>
     /// <param name="width">The width of the land.</param>
     /// <returns>A GameArea representing the terraformed land.</returns>
-    let public terraformRandomLand (length: int, width : int) : GameArea =
+    let public terraformRandomLand (length: int, width : int) : World =
         let grid = Array2D.create length width IronImpregnatedRock
 
         // Cycle through each cell in the grid and assign a random rock type
@@ -55,7 +55,7 @@ module Terraforming =
     let public terraformBiasedLand (
         length: int, 
         width : int,
-        biasPercentage: int) (preferredRock: Rock) : GameArea =
+        biasPercentage: int) (preferredRock: Rock) : World =
         let grid = Array2D.create length width IronImpregnatedRock
         
         // Cycle through each cell in the grid and assign a random rock type
