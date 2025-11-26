@@ -10,7 +10,7 @@ type World2D = {
     ///  <summary>
     /// The dimensions of the world in X and Y axes.
     ///  </summary>
-    Dimensions: Coordinate2D
+    Dimensions: Size2D
 
     Map: Rock[,]
 }
@@ -22,6 +22,6 @@ type World3D = {
     ///  <summary>
     /// The dimensions of the world in X, Y and Z axes.
     ///  </summary>
-    Dimensions: Coordinate3D
+    Dimensions: Size3D
     Map: Rock[,,]
 }

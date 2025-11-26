@@ -1,7 +1,8 @@
 namespace Dibware.F.In.Manufacturing.Domain.Behaviours.Generators
 
-open Dibware.F.In.Manufacturing.Domain.Types.Terraforming
 open Dibware.F.In.Manufacturing.Domain.Types.Mining
+open Dibware.F.In.Manufacturing.Domain.Types.Terraforming
+open Dibware.F.In.Manufacturing.Domain.Types.Measurements
 
 module Terraforming =
     /// <summary>
@@ -9,9 +10,12 @@ module Terraforming =
     /// </summary>
     let rocks = [|
         IronImpregnatedRock; 
-        CoalimpregnatedRock; 
+        CoalImpregnatedRock; 
         CopperImpregnatedRock; 
-        Shale 
+        GasShale;
+        OilShale;
+        Useless;
+        VoidOfAnyRock;
     |]
 
     /// <summary>
@@ -28,46 +32,51 @@ module Terraforming =
     /// </summary>
     /// <param name="length">The length of the land.</param>
     /// <param name="width">The width of the land.</param>
-    /// <returns>A GameArea representing the terraformed land.</returns>
-    let public terraformRandomLand (length: int, width : int) : World =
-        let grid = Array2D.create length width IronImpregnatedRock
-
-        // Cycle through each cell in the grid and assign a random rock type
-        for lengthIndex in 0 .. length - 1 do
-            for widthIndex in 0 .. width - 1 do
-                grid.[lengthIndex, widthIndex] <- getRandomRock()
+    /// <returns>
+    /// A <see cref="World2D" /> representing the terraformed land.
+    /// </returns>
+    let public terraformRandomLandWithSize (size: Size2D) : World2D =
+        let map = Array2D.init size.X size.Y (fun _ _ -> getRandomRock())
 
         // Return the generated GameArea
-        { Grid = grid }
+        let world2D = {Dimensions = size; Map = map} : World2D
 
-    /// <summary>
-    /// A factory function that simulates terraforming a piece of land
-    /// with a bias towards a preferred rock type. The higher the biasPercentage,
-    /// the more likely the preferred rock type will appear.
-    /// </summary>
-    /// <param name="length">The length of the land.</param>
-    /// <param name="width">The width of the land.</param>
-    /// <param name="biasPercentage">
-    /// The percentage chance of the preferred rock type appearing, with higher 
-    /// the percentage, the more likely the preferred rock type will appear.
-    /// </param>
-    /// <returns>A GameArea representing the terraformed land.</returns>
-    let public terraformBiasedLand (
-        length: int, 
-        width : int,
-        biasPercentage: int) (preferredRock: Rock) : World =
-        let grid = Array2D.create length width IronImpregnatedRock
+        world2D
+
+    let public terraformRandomLandWithDimensions
+        (length: int)
+        (width: int) : World2D =
+        terraformRandomLandWithSize {X = length; Y = width}
+
+
+    ///// <summary>
+    ///// A factory function that simulates terraforming a piece of land
+    ///// with a bias towards a preferred rock type. The higher the biasPercentage,
+    ///// the more likely the preferred rock type will appear.
+    ///// </summary>
+    ///// <param name="length">The length of the land.</param>
+    ///// <param name="width">The width of the land.</param>
+    ///// <param name="biasPercentage">
+    ///// The percentage chance of the preferred rock type appearing, with higher 
+    ///// the percentage, the more likely the preferred rock type will appear.
+    ///// </param>
+    ///// <returns>A GameArea representing the terraformed land.</returns>
+    //let public terraformBiasedLand (
+    //    length: int, 
+    //    width : int,
+    //    biasPercentage: int) (preferredRock: Rock) : World2D =
+    //    let grid = Array2D.create length width IronImpregnatedRock
         
-        // Cycle through each cell in the grid and assign a random rock type
-        for lengthIndex in 0 .. length - 1 do
-            for widthIndex in 0 .. width - 1 do
-                let randomValue = System.Random().Next(0, 100)
-                if randomValue < biasPercentage then
-                    grid.[lengthIndex, widthIndex] <- preferredRock
-                else
-                    grid.[lengthIndex, widthIndex] <- getRandomRock()
+    //    // Cycle through each cell in the grid and assign a random rock type
+    //    for lengthIndex in 0 .. length - 1 do
+    //        for widthIndex in 0 .. width - 1 do
+    //            let randomValue = System.Random().Next(0, 100)
+    //            if randomValue < biasPercentage then
+    //                grid.[lengthIndex, widthIndex] <- preferredRock
+    //            else
+    //                grid.[lengthIndex, widthIndex] <- getRandomRock()
         
-        // Return the generated GameArea
-        { Grid = grid }
+    //    // Return the generated GameArea
+    //    { Grid = grid }
 
 
