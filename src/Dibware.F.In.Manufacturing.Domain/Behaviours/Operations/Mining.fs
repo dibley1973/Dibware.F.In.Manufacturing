@@ -20,6 +20,16 @@ module Mining =
         | _ -> None
 
     /// <summary>
-    /// Gets the mining plant for Iron Ore.
+    /// Gets a mine for Iron Ore.
     /// </summary>
     let getIronOreMine() = getMineForOre Ore.IronOre
+
+    /// <summary>
+    /// Gets a mine for Coal.
+    /// </summary>
+    let getCoalMine() = getMineForOre Ore.Coal
+
+    /// <summary>
+    /// Gets a mine for Copper Ore.
+    /// </summary>
+    let getCopperOreMine() = getMineForOre Ore.CopperOre
