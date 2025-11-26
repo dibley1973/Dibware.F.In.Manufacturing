@@ -15,7 +15,7 @@ type MiningTests () =
         let ironOre = Ore.IronOre 
 
         // Act
-        let actual = Mining.getMiningPlantForOre(ironOre)
+        let actual = Mining.getMineForOre(ironOre)
 
         // Assert
         Assert.IsTrue(actual.IsSome);
@@ -27,7 +27,7 @@ type MiningTests () =
         let goldOre = Ore.GoldOre
 
         // Act
-        let actual = Mining.getMiningPlantForOre(goldOre)
+        let actual = Mining.getMineForOre(goldOre)
 
         // Assert
         Assert.IsTrue(actual.IsNone);
