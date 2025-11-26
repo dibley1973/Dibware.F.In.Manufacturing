@@ -38,7 +38,7 @@ type MiningTests () =
         let expected = (Mine.IronOreMine |> Some)
         
         // Act
-        let actual = Mining.getIronOreMine
+        let actual = Mining.getIronOreMine()
 
         // Assert
         Assert.IsTrue(actual.IsSome);

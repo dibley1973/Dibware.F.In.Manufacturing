@@ -22,4 +22,4 @@ module Mining =
     /// <summary>
     /// Gets the mining plant for Iron Ore.
     /// </summary>
-    let getIronOreMine = getMiningPlantForOre Ore.IronOre
+    let getIronOreMine() = getMiningPlantForOre Ore.IronOre

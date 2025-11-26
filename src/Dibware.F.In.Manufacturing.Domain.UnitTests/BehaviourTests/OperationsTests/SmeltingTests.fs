@@ -38,7 +38,7 @@ type SmeltingTests () =
         let expected = (SmeltingPlant.IronOreSmelter |> Some)
         
         // Act
-        let actual = Smelting.getIronOreSmeltingPlant
+        let actual = Smelting.getIronOreSmeltingPlant()
 
         // Assert
         Assert.IsTrue(actual.IsSome);
