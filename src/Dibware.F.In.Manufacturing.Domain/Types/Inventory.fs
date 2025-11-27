@@ -15,6 +15,7 @@ type Quantity = int
 
 /// <summary>
 /// Represents a type of an item in the inventory.
+/// </summary>
 type InventoryItem =
     | Rock of Rock * Quantity
     | Ore of Ore * Quantity
@@ -36,26 +37,34 @@ type InventoryItemQuantity = {
 /// </summary>
 module Inventory =
 
-    // The Inventory type is a map where the key is the item name (string)
-    // and the value is the InventoryItem record.
+    /// <summary>
+    /// The Inventory type is a map where the key is the item name (string)
+    /// and the value is the InventoryItem record.
+    /// </summary>
     type T = Map<string, InventoryItemQuantity>
-
-    ///// <summary>
-    ///// Represents an empty inventory
-    ///// </summary>
-    //let empty : T = Map.empty
 
     /// <summary>
     /// Creates an empty inventory.
     /// </summary>
+    /// <returns>An empty inventory of type T.</returns>
     let createEmptyInventory() : T =  
         Map.empty
 
-        // Function to get an item (returns an Option<InventoryItem>)
+    /// <summary>
+    /// Function to get an item (returns an Option<InventoryItem>)
+    /// </summary>
+    /// <param name="name">The name of the item to retrieve.</param>
+    /// <param name="inventory">The inventory from which to retrieve the item.</param>
+    /// <returns>An Option containing the InventoryItem if found, otherwise None.</returns>
     let getItem name (inventory: T) : Option<InventoryItemQuantity> =
         Map.tryFind name inventory
-        
-    // Function to remove an item
+    
+    /// <summary>
+    /// Function to remove an item
+    /// </summary>
+    /// <param name="name">The name of the item to remove.</param>
+    /// <param name="inventory">The inventory from which to remove the item.</param>
+    /// <returns>The updated inventory after removing the item.</returns>
     let removeItem name (inventory: T) : T =
         Map.remove name inventory
 
