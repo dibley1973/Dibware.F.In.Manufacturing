@@ -19,7 +19,7 @@ type TerraformingTests () =
 
         // Act
         let actual = terraformRandom2DWorldWithSize size
-        
+
         // Assert
         Assert.IsNotNull(actual)
         Assert.AreEqual(xLength, actual.Map.GetLength(arrayDimensionForX))
@@ -36,34 +36,34 @@ type TerraformingTests () =
 
         // Act
         let actual = terraformFixedRock2DWorldWithSize(size) Rock.IronImpregnatedRock
-        
+
         // Assert
         Assert.IsNotNull(actual)
         Assert.AreEqual(xLength, actual.Map.GetLength(arrayDimensionForX))
         Assert.AreEqual(yLength, actual.Map.GetLength(arrayDimensionForY))
 
-    //[<TestMethod>]
-    //member public this.terraformPreferredRock2DWorldWithSize_With70PercentPreferredRock_ReturnsGameAreaContainsAtLeast70OfPreferredRockElements () =
-    //    // Arrange
-    //    let xLength = 10
-    //    let yLength = 12
-    //    let size: Size2D = { X = xLength; Y = yLength } 
-    //    let preferredRock = Rock.IronImpregnatedRock
-    //    let expectedFlattenedLength = xLength * yLength
-    //    let expectedMinimumPreferredRockCount = (expectedFlattenedLength * 70) / 100
+    [<TestMethod>]
+    member public this.terraformPreferredRock2DWorldWithSize_With70PercentPreferredRock_ReturnsGameAreaContainsAtLeast70OfPreferredRockElements () =
+        // Arrange
+        let xLength = 10
+        let yLength = 12
+        let size: Size2D = { X = xLength; Y = yLength } 
+        let preferredRock = Rock.IronImpregnatedRock
+        let expectedFlattenedLength = xLength * yLength
+        let expectedMinimumPreferredRockCount = (expectedFlattenedLength * 70) / 100
 
-    //    // Act
-    //    let actual = terraformPreferredRock2DWorldWithSize size 70 preferredRock
-    //    let flatten (map: Rock[,]) : Rock[] =
-    //        [|
-    //            for x in 0 .. (map.GetLength(0) - 1) do
-    //                for y in 0 .. (map.GetLength(1) - 1) do
-    //                    yield map.[x,y]
-    //        |]
-    //    let seq2d = actual.Map |> Seq.fold Seq.append Seq.empty<Rock>
-    //    let actualPreferredRockCount = actual |> Array.filter(fun rock -> rock = preferredRock) |> Array.length
-        
-    //    // Assert
-    //    Assert.IsNotNull(actual)
-    //    Assert.AreEqual(expectedFlattenedLength,actual.Map|> Array.collect flatten)
-    //    Assert.IsTrue(actualPreferredRockCount >= expectedMinimumPreferredRockCount)
+        // Act
+        let actual = terraformPreferredRock2DWorldWithSize size 70 preferredRock
+        let flatten2DArray (map: Rock[,]) : Rock[] =
+            [|
+                for x in 0 .. (map.GetLength(0) - 1) do
+                    for y in 0 .. (map.GetLength(1) - 1) do
+                        yield map.[x,y]
+            |]
+        let flattenedActual = actual.Map |> flatten2DArray
+        let actualPreferredRockCount = flattenedActual |> Array.filter(fun rock -> rock = preferredRock) |> Array.length
+
+        // Assert
+        Assert.IsNotNull(actual)
+        Assert.AreEqual(expectedFlattenedLength, flattenedActual.Length)
+        Assert.IsTrue(actualPreferredRockCount >= expectedMinimumPreferredRockCount)
