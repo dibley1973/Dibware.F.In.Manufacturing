@@ -50,8 +50,8 @@ module Terraforming =
 
         // Read the world size from the map
         let size2D = { 
-            X = map.GetLength(0)
-            Y = map.GetLength(1)
+            XLength = map.GetLength(0)
+            YLength = map.GetLength(1)
         }
 
         // Generated and return the world in 2D
@@ -68,7 +68,7 @@ module Terraforming =
     /// A <see cref="World2D" /> representing the terraformed 2D world.
     /// </returns>
     let public terraform2DWorldFromSizeAndGenerator (size: Size2D, rockGenerator ) : World2D =
-        let map2D = Array2D.init size.X size.Y rockGenerator
+        let map2D = Array2D.init size.XLength size.YLength rockGenerator
         let world2D =terraform2DWorldFromMap(map2D)
 
         world2D
