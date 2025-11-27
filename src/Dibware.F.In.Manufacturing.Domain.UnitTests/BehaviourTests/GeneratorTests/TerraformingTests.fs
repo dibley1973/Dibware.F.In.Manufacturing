@@ -14,14 +14,16 @@ type TerraformingTests () =
         let xLength = 10
         let yLength = 12
         let size: Size2D = { X = xLength; Y = yLength }
+        let arrayDimensionForX = 0
+        let arrayDimensionForY = 1
 
         // Act
         let actual = terraformRandom2DWorldWithSize size
         
         // Assert
         Assert.IsNotNull(actual)
-        Assert.AreEqual(xLength, actual.Map.GetLength(0))
-        Assert.AreEqual(yLength, actual.Map.GetLength(1))
+        Assert.AreEqual(xLength, actual.Map.GetLength(arrayDimensionForX))
+        Assert.AreEqual(yLength, actual.Map.GetLength(arrayDimensionForY))
 
     [<TestMethod>]
     member public this.terraformFixedRock2DWorldWithSize_WithValidDimensions_ReturnsGameArea () =
@@ -29,14 +31,16 @@ type TerraformingTests () =
         let xLength = 10
         let yLength = 12
         let size: Size2D = { X = xLength; Y = yLength }
+        let arrayDimensionForX = 0
+        let arrayDimensionForY = 1
 
         // Act
         let actual = terraformFixedRock2DWorldWithSize(size) Rock.IronImpregnatedRock
         
         // Assert
         Assert.IsNotNull(actual)
-        Assert.AreEqual(xLength, actual.Map.GetLength(0))
-        Assert.AreEqual(yLength, actual.Map.GetLength(1))
+        Assert.AreEqual(xLength, actual.Map.GetLength(arrayDimensionForX))
+        Assert.AreEqual(yLength, actual.Map.GetLength(arrayDimensionForY))
 
     //[<TestMethod>]
     //member public this.terraformPreferredRock2DWorldWithSize_With70PercentPreferredRock_ReturnsGameAreaContainsAtLeast70OfPreferredRockElements () =
