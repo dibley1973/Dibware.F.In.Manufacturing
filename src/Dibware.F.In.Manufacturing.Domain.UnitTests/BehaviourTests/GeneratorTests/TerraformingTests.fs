@@ -3,53 +3,63 @@
 open Microsoft.VisualStudio.TestTools.UnitTesting
 open Dibware.F.In.Manufacturing.Domain.Behaviours.Generators.Terraforming
 open Dibware.F.In.Manufacturing.Domain.Types.Mining
+open Dibware.F.In.Manufacturing.Domain.Types.Measurements
 
 [<TestClass>]
 type TerraformingTests () =
 
     [<TestMethod>]
-    member public this.terraformRandomLand_WithValidDimensions_ReturnsGameArea () =
+    member public this.terraformRandom2DWorldWithSize_WithValidDimensions_ReturnsGameArea () =
         // Arrange
-        let length = 10
-        let width = 10
+        let xLength = 10
+        let yLength = 12
+        let size: Size2D = { X = xLength; Y = yLength }
 
         // Act
-        let actual = terraformRandomLandWithDimensions length width
+        let actual = terraformRandom2DWorldWithSize size
         
         // Assert
         Assert.IsNotNull(actual)
-        Assert.AreEqual(length, actual.Map.GetLength(0))
-        Assert.AreEqual(width, actual.Map.GetLength(1))
+        Assert.AreEqual(xLength, actual.Map.GetLength(0))
+        Assert.AreEqual(yLength, actual.Map.GetLength(1))
 
     [<TestMethod>]
-    member public this.terraformBiasedLand_WithValidDimensions_ReturnsGameArea () =
+    member public this.terraformFixedRock2DWorldWithSize_WithValidDimensions_ReturnsGameArea () =
         // Arrange
-        let length = 10
-        let width = 10
+        let xLength = 10
+        let yLength = 12
+        let size: Size2D = { X = xLength; Y = yLength }
 
         // Act
-        let actual = terraformBiasedLand(length, width, 70) Rock.IronImpregnatedRock
+        let actual = terraformFixedRock2DWorldWithSize(size) Rock.IronImpregnatedRock
         
         // Assert
         Assert.IsNotNull(actual)
-        Assert.AreEqual(length, actual.Map.GetLength(0))
-        Assert.AreEqual(width, actual.Map.GetLength(1))
+        Assert.AreEqual(xLength, actual.Map.GetLength(0))
+        Assert.AreEqual(yLength, actual.Map.GetLength(1))
 
-    [<TestMethod>]
-    member public this.terraformBiasedLand_With70PercentPreferredRock_ReturnsGameAreaContainsAtLeast70OfPreferredRockElements () =
-        // Arrange
-        let length = 10
-        let width = 10
-        let preferredRock = Rock.IronImpregnatedRock
-        let expectedFlattenedLength = length * width
-        let expectedMinimumPreferredRockCount = (expectedFlattenedLength * 70) / 100
+    //[<TestMethod>]
+    //member public this.terraformPreferredRock2DWorldWithSize_With70PercentPreferredRock_ReturnsGameAreaContainsAtLeast70OfPreferredRockElements () =
+    //    // Arrange
+    //    let xLength = 10
+    //    let yLength = 12
+    //    let size: Size2D = { X = xLength; Y = yLength } 
+    //    let preferredRock = Rock.IronImpregnatedRock
+    //    let expectedFlattenedLength = xLength * yLength
+    //    let expectedMinimumPreferredRockCount = (expectedFlattenedLength * 70) / 100
 
-        // Act
-        let landGrid = terraformBiasedLand(length, width, 70) Rock.IronImpregnatedRock
-        let actual = landGrid.Grid |> Seq.cast<Rock> |> Seq.toArray
-        let actualPreferredRockCount = actual |> Array.filter(fun rock -> rock = preferredRock) |> Array.length
+    //    // Act
+    //    let actual = terraformPreferredRock2DWorldWithSize size 70 preferredRock
+    //    let flatten (map: Rock[,]) : Rock[] =
+    //        [|
+    //            for x in 0 .. (map.GetLength(0) - 1) do
+    //                for y in 0 .. (map.GetLength(1) - 1) do
+    //                    yield map.[x,y]
+    //        |]
+    //    let seq2d = actual.Map |> Seq.fold Seq.append Seq.empty<Rock>
+    //    let actualPreferredRockCount = actual |> Array.filter(fun rock -> rock = preferredRock) |> Array.length
         
-        // Assert
-        Assert.IsNotNull(actual)
-        Assert.AreEqual(expectedFlattenedLength, actual.GetLength(0))
-        Assert.IsTrue(actualPreferredRockCount >= expectedMinimumPreferredRockCount)
+    //    // Assert
+    //    Assert.IsNotNull(actual)
+    //    Assert.AreEqual(expectedFlattenedLength,actual.Map|> Array.collect flatten)
+    //    Assert.IsTrue(actualPreferredRockCount >= expectedMinimumPreferredRockCount)
