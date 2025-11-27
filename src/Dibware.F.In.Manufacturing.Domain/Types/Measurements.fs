@@ -10,10 +10,14 @@
 /// </remarks>
 type Coordinate2D = {
     /// <summary>
-    /// the distance along the X axis from the datum point.
+    /// The distance along the X axis from the datum point.
     /// </summary>
-    X: int
-    Y: int
+    XPosition: int
+
+    /// <summary>
+    /// The distance along the Y axis from the datum point.
+    /// </summary>
+    YPosition: int
 }
 
 /// <summary>
@@ -26,9 +30,20 @@ type Coordinate2D = {
 /// The Z axis extends downwards, into the world.
 /// </remarks>
 type Coordinate3D = {
-    X: int
-    Y: int
-    Z: int
+    /// <summary>
+    /// The distance along the X axis from the datum point.
+    /// </summary>
+    XPosition: int
+
+    /// <summary>
+    /// The distance along the Y axis from the datum point.
+    /// </summary>
+    YPosition: int
+
+    /// <summary>
+    /// The distance along the Z axis from the datum point.
+    /// </summary>
+    ZPosition: int
 }
 
 /// <summary>
@@ -38,16 +53,30 @@ type Size2D = {
     /// <summary>
     /// The length of the X-axis of an object.
     /// </summary>
-    X: int
+    XLength: int
 
     /// <summary>
     /// The length of the Y-axis of an object.
     /// </summary>
-    Y: int
+    YLength: int
 }
 
+/// <summary>
+/// Represents a size in 3 Dimensions.
+/// </summary>
 type Size3D = {
-    X: int
-    Y: int
-    Z: int
+    /// <summary>
+    /// The length of the X-axis of an object.
+    /// </summary>
+    XLength: int
+
+    /// <summary>
+    /// The length of the Y-axis of an object.
+    /// </summary>
+    YLength: int
+
+    /// <summary>
+    /// The length of the Z-axis of an object.
+    /// </summary>
+    ZLength: int
 }
