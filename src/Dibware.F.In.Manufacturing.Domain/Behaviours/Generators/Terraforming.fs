@@ -88,6 +88,17 @@ module Terraforming =
         terraform2DWorldFromSizeAndGenerator(size, rockGenerator)
 
     /// <summary>
+    /// A factory function that terraforms a world with a fixed rock type throughout.
+    /// </summary>
+    /// <param name="size">The 2D size of the world to create.</param>
+    /// <returns>
+    /// A <see cref="World2D" /> representing the terraformed 2D world.
+    /// </returns>
+    let public terraformFixedRock2DWorldWithSize (size: Size2D) (fixedRock: Rock) : World2D = 
+        let rockGenerator = fun _ _ -> fixedRock
+        terraform2DWorldFromSizeAndGenerator(size, rockGenerator)
+
+    /// <summary>
     /// A factory function that terraforms a world with a bias towards a preferred rock type. 
     /// The higher the biasPercentage,the more likely the preferred rock type will appear.
     /// </summary>
