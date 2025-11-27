@@ -38,27 +38,53 @@ type MiningTests () =
         Assert.IsTrue(actual.IsNone);
         Assert.AreEqual(None, actual);
 
+    [<TestMethod>]
+    member this.mineLocation_WithUselessRock_ReturnsNone () =
+        // Arrange
+        let location : Coordinate2D = { XPosition = 0; YPosition = 0}
+        let rockMap = Array2D.create 1 1 Rock.Useless
+        let worldSize : Size2D = { XLength = 1; YLength = 1 }
+        let world : World2D = { Dimensions = worldSize; Map = rockMap }
+        let rockMiner (loc: Coordinate2D, w: World2D) : Rock =
+            w.Map.[loc.XPosition, loc.YPosition]
 
+        // Act
+        let actual = Mining.mineLocation(location, world, rockMiner)
 
-    //[<TestMethod>]
-    //member this.MineLocation_WithunsupportedOre_ReturnsNone () =
-    //    // Arrange
-    //    let goldOre = Ore.GoldOre
+        // Assert
+        Assert.IsTrue(actual.IsNone);
+        Assert.AreEqual(None, actual);
 
-    //    // Act
-    //    let actual = Mining.MineLocation(goldOre)
+    [<TestMethod>]
+    member this.mineLocation_WithVoidOfAnyRock_ReturnsNone () =
+        // Arrange
+        let location : Coordinate2D = { XPosition = 0; YPosition = 0}
+        let rockMap = Array2D.create 1 1 Rock.VoidOfAnyRock
+        let worldSize : Size2D = { XLength = 1; YLength = 1 }
+        let world : World2D = { Dimensions = worldSize; Map = rockMap }
+        let rockMiner (loc: Coordinate2D, w: World2D) : Rock =
+            w.Map.[loc.XPosition, loc.YPosition]
 
-    //    // Assert
-    //    Assert.IsTrue(actual.IsNone);
+        // Act
+        let actual = Mining.mineLocation(location, world, rockMiner)
 
-    //[<TestMethod>]
-    //member this.getMiningPlantForOre_ReturnsIronOreMine () =
-    //    // Arrange
-    //    let expected = (Mine.IronOreMine |> Some)
-        
-    //    // Act
-    //    let actual = Mining.getIronOreMine()
+        // Assert
+        Assert.IsTrue(actual.IsNone);
+        Assert.AreEqual(None, actual);
 
-    //    // Assert
-    //    Assert.IsTrue(actual.IsSome);
-    //    Assert.AreEqual(expected, actual);
+    [<TestMethod>]
+    member this.mineLocation_WithIronImpregnatedRock_ReturnsSomeIronOre () =
+        // Arrange
+        let location : Coordinate2D = { XPosition = 0; YPosition = 0}
+        let rockMap = Array2D.create 1 1 Rock.IronImpregnatedRock
+        let worldSize : Size2D = { XLength = 1; YLength = 1 }
+        let world : World2D = { Dimensions = worldSize; Map = rockMap }
+        let rockMiner (loc: Coordinate2D, w: World2D) : Rock =
+            w.Map.[loc.XPosition, loc.YPosition]
+
+        // Act
+        let actual = Mining.mineLocation(location, world, rockMiner)
+
+        // Assert
+        Assert.IsTrue(actual.IsSome);
+        Assert.AreEqual(Rock.IronImpregnatedRock, actual.Value);

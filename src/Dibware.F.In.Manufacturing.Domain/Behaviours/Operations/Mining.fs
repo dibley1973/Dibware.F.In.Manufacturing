@@ -29,7 +29,7 @@ module Mining =
     /// <param name="location">The 2D location to check for rock.</param>
     /// <param name="world">The 2D world containing the rock map.</param>
     /// <returns>The rock at the specified location, or None if no rock is present.</returns>
-    let public MineLocation (location: Coordinate2D, world: World2D, rockMiner) : Rock option =
+    let public mineLocation (location: Coordinate2D, world: World2D, rockMiner) : Rock option =
         //let rockAtLocation = world.Map.[location.X, location.Y]
         let rockAtLocation = rockMiner(location, world)
         
