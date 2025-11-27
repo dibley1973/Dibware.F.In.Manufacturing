@@ -13,7 +13,7 @@ type TerraformingTests () =
         // Arrange
         let xLength = 10
         let yLength = 12
-        let size: Size2D = { X = xLength; Y = yLength }
+        let size: Size2D = { XLength = xLength; YLength = yLength }
         let arrayDimensionForX = 0
         let arrayDimensionForY = 1
 
@@ -30,7 +30,7 @@ type TerraformingTests () =
         // Arrange
         let xLength = 10
         let yLength = 12
-        let size: Size2D = { X = xLength; Y = yLength }
+        let size: Size2D = { XLength = xLength; YLength = yLength }
         let arrayDimensionForX = 0
         let arrayDimensionForY = 1
 
@@ -47,7 +47,7 @@ type TerraformingTests () =
         // Arrange
         let xLength = 10
         let yLength = 12
-        let size: Size2D = { X = xLength; Y = yLength } 
+        let size: Size2D = { XLength = xLength; YLength = yLength } 
         let preferredRock = Rock.IronImpregnatedRock
         let expectedFlattenedLength = xLength * yLength
         let expectedMinimumPreferredRockCount = (expectedFlattenedLength * 70) / 100
