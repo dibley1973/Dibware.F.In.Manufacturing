@@ -3,7 +3,6 @@ namespace Dibware.F.In.Manufacturing.Domain.UnitTests
 open Microsoft.VisualStudio.TestTools.UnitTesting
 open Dibware.F.In.Manufacturing.Domain.Behaviours.Operations
 open Dibware.F.In.Manufacturing.Domain.Types.Mining
-open Dibware.F.In.Manufacturing.Domain.Types.Materials
 open Dibware.F.In.Manufacturing.Domain.Types.Terraforming
 open Dibware.F.In.Manufacturing.Domain.Types.Measurements
 
@@ -36,7 +35,7 @@ type MiningTests () =
         let actual = Mining.getRockAtLocation(location, world)
 
         // Assert
-        Assert.IsTrue(actual.IsSome);
+        Assert.IsTrue(actual.IsNone);
         Assert.AreEqual(None, actual);
 
 
