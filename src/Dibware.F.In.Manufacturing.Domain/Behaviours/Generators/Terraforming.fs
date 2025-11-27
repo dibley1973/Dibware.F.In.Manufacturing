@@ -21,62 +21,84 @@ module Terraforming =
     /// <summary>
     /// A helper function that gets a random rock type.
     /// </summary>
+    /// <remarks>This function is impure due to the use of randomness.</remarks>
     let public getRandomRock () : Rock =
         let randomIndex = System.Random().Next(rocks.Length)
         
         rocks.[randomIndex]
 
     /// <summary>
-    /// A factory function that simulates terraforming a piece of land
-    /// with random rock formations. Totally random.rock type selection.
+    /// A helper function that gets a rock type with a bias towards a preferred rock type.
     /// </summary>
-    /// <param name="length">The length of the land.</param>
-    /// <param name="width">The width of the land.</param>
-    /// <returns>
-    /// A <see cref="World2D" /> representing the terraformed land.
-    /// </returns>
-    let public terraformRandomLandWithSize (size: Size2D) : World2D =
-        let map = Array2D.init size.X size.Y (fun _ _ -> getRandomRock())
+    /// <remarks>This function is impure due to the use of randomness.</remarks>
+    let public getPreferredRockWithBias (biasPercentage: int) (preferredRock: Rock) : Rock =
+        let randomValue = System.Random().Next(0, 100)
+        
+        if randomValue < biasPercentage then
+            preferredRock
+        else
+            getRandomRock()
 
-        // Return the generated GameArea
-        let world2D = {Dimensions = size; Map = map} : World2D
+    /// <summary>
+    /// A factory function that terraforms a 2D world using the provided rock map.
+    /// </summary>
+    /// <param name="map">The 2D rock map to use in terraforming the world.</param>
+    /// <returns>
+    /// A <see cref="World2D" /> representing the terraformed 2D world.
+    /// </returns>
+    let public terraform2DWorldFromMap (map: Rock[,]) : World2D =
+
+        // Read the world size from the map
+        let size2D = { 
+            X = map.GetLength(0)
+            Y = map.GetLength(1)
+        }
+
+        // Generated and return the world in 2D
+        { Dimensions = size2D; Map = map } : World2D
+
+    /// <summary>
+    /// A factory function that terraforms a 2D world using the provided size and rock generator function.
+    /// </summary>
+    /// <param name="size">The 2D size of the world to create.</param>
+    /// <param name="rockGenerator">
+    /// A function that generates a rock type based on the provided X and Y coordinates.
+    /// </param>
+    /// <returns>
+    /// A <see cref="World2D" /> representing the terraformed 2D world.
+    /// </returns>
+    let public terraform2DWorldFromSizeAndGenerator (size: Size2D, rockGenerator ) : World2D =
+        let map2D = Array2D.init size.X size.Y rockGenerator
+        let world2D =terraform2DWorldFromMap(map2D)
 
         world2D
 
-    let public terraformRandomLandWithDimensions
-        (length: int)
-        (width: int) : World2D =
-        terraformRandomLandWithSize {X = length; Y = width}
+    /// <summary>
+    /// A factory function that terraforms a 2D world with random rock formations. 
+    /// Uses the <see cref="getRandomRock" /> function to totally random.rock type selection.
+    /// </summary>
+    /// <param name="size">The 2D size of the world to create.</param>
+    /// <returns>
+    /// A <see cref="World2D" /> representing the terraformed 2D world.
+    /// </returns>
+    let public terraformRandom2DWorldWithSize (size: Size2D) : World2D = 
 
+        let rockGenerator = fun _ _ -> getRandomRock()
 
-    ///// <summary>
-    ///// A factory function that simulates terraforming a piece of land
-    ///// with a bias towards a preferred rock type. The higher the biasPercentage,
-    ///// the more likely the preferred rock type will appear.
-    ///// </summary>
-    ///// <param name="length">The length of the land.</param>
-    ///// <param name="width">The width of the land.</param>
-    ///// <param name="biasPercentage">
-    ///// The percentage chance of the preferred rock type appearing, with higher 
-    ///// the percentage, the more likely the preferred rock type will appear.
-    ///// </param>
-    ///// <returns>A GameArea representing the terraformed land.</returns>
-    //let public terraformBiasedLand (
-    //    length: int, 
-    //    width : int,
-    //    biasPercentage: int) (preferredRock: Rock) : World2D =
-    //    let grid = Array2D.create length width IronImpregnatedRock
-        
-    //    // Cycle through each cell in the grid and assign a random rock type
-    //    for lengthIndex in 0 .. length - 1 do
-    //        for widthIndex in 0 .. width - 1 do
-    //            let randomValue = System.Random().Next(0, 100)
-    //            if randomValue < biasPercentage then
-    //                grid.[lengthIndex, widthIndex] <- preferredRock
-    //            else
-    //                grid.[lengthIndex, widthIndex] <- getRandomRock()
-        
-    //    // Return the generated GameArea
-    //    { Grid = grid }
+        terraform2DWorldFromSizeAndGenerator(size, rockGenerator)
 
+    /// <summary>
+    /// A factory function that terraforms a world with a bias towards a preferred rock type. 
+    /// The higher the biasPercentage,the more likely the preferred rock type will appear.
+    /// </summary>
+    /// <param name="size">The 2D size of the world to create.</param>
+    /// <param name="biasPercentage">An integer representing the percentage chance of the preferred rock type appearing.</param>
+    /// <param name="preferredRock">The preferred rock type to bias towards.</param>
+    /// <returns>
+    /// A <see cref="World2D" /> representing the terraformed 2D world.
+    /// </returns>
+    let public terraformPreferredRock2DWorldWithSize (size: Size2D) (biasPercentage: int) (preferredRock: Rock) : World2D =
 
+        let rockGenerator = fun _ _ -> getPreferredRockWithBias biasPercentage preferredRock
+
+        terraform2DWorldFromSizeAndGenerator( size, rockGenerator )
