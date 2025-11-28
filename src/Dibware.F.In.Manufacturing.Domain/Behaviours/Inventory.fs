@@ -17,11 +17,11 @@ type Quantity = int
 /// Represents a type of an item in the inventory.
 /// </summary>
 type InventoryItem =
-    | Rock of Rock * Quantity
-    | Ore of Ore * Quantity
-    | Raw of RawMaterial * Quantity
-    | Processed of ProcessedMaterial * Quantity
-    | ComponentItem of Component * Quantity
+    | Rock of Rock
+    | Ore of Ore
+    | Raw of RawMaterial
+    | Processed of ProcessedMaterial
+    | ComponentItem of Component
 
 /// <summary>
 /// Represents an inventory item along with its quantity.
