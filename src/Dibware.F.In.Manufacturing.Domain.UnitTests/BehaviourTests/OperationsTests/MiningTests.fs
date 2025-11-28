@@ -6,6 +6,9 @@ open Dibware.F.In.Manufacturing.Domain.Types.Mining
 open Dibware.F.In.Manufacturing.Domain.Types.Terraforming
 open Dibware.F.In.Manufacturing.Domain.Types.Measurements
 
+/// <summary>
+/// Tests for Mining behaviour
+/// </summary>
 [<TestClass>]
 type MiningTests () =
     [<TestMethod>]
@@ -15,10 +18,10 @@ type MiningTests () =
         let rockMap = Array2D.create 1 1 Rock.IronImpregnatedRock
         let worldSize : Size2D = { XLength = 1; YLength = 1 }
         let world : World2D = { Dimensions = worldSize; Map = rockMap }
-
+        
         // Act
         let actual = Mining.getRockAtLocation(location, world)
-
+        
         // Assert
         Assert.IsTrue(actual.IsSome);
         Assert.AreEqual(Rock.IronImpregnatedRock, actual.Value);
@@ -30,10 +33,10 @@ type MiningTests () =
         let rockMap = Array2D.create 1 1 Rock.VoidOfAnyRock
         let worldSize : Size2D = { XLength = 1; YLength = 1 }
         let world : World2D = { Dimensions = worldSize; Map = rockMap }
-
+        
         // Act
         let actual = Mining.getRockAtLocation(location, world)
-
+        
         // Assert
         Assert.IsTrue(actual.IsNone);
         Assert.AreEqual(None, actual);
@@ -47,10 +50,10 @@ type MiningTests () =
         let world : World2D = { Dimensions = worldSize; Map = rockMap }
         let rockMiner (loc: Coordinate2D, w: World2D) : Rock =
             w.Map.[loc.XPosition, loc.YPosition]
-
+        
         // Act
         let actual = Mining.mineLocation(location, world, rockMiner)
-
+        
         // Assert
         Assert.IsTrue(actual.IsNone);
         Assert.AreEqual(None, actual);
@@ -64,10 +67,10 @@ type MiningTests () =
         let world : World2D = { Dimensions = worldSize; Map = rockMap }
         let rockMiner (loc: Coordinate2D, w: World2D) : Rock =
             w.Map.[loc.XPosition, loc.YPosition]
-
+        
         // Act
         let actual = Mining.mineLocation(location, world, rockMiner)
-
+        
         // Assert
         Assert.IsTrue(actual.IsNone);
         Assert.AreEqual(None, actual);
@@ -81,10 +84,10 @@ type MiningTests () =
         let world : World2D = { Dimensions = worldSize; Map = rockMap }
         let rockMiner (loc: Coordinate2D, w: World2D) : Rock =
             w.Map.[loc.XPosition, loc.YPosition]
-
+        
         // Act
         let actual = Mining.mineLocation(location, world, rockMiner)
-
+        
         // Assert
         Assert.IsTrue(actual.IsSome);
         Assert.AreEqual(Rock.IronImpregnatedRock, actual.Value);
