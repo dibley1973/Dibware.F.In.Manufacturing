@@ -11,6 +11,7 @@
     <Compile Include="Types\Materials.fs" />
     <Compile Include="Types\Mining.fs" />
     <Compile Include="Types\Terraforming.fs" />
+    <Compile Include="Types\Inventory.fs" />
     <Compile Include="Behaviours\Inventory.fs" />
     <Compile Include="Behaviours\Operations\OreExtraction.fs" />
     <Compile Include="Behaviours\Operations\Smelting.fs" />
