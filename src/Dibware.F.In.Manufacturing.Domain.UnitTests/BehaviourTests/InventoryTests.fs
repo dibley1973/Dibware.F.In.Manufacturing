@@ -76,3 +76,73 @@ type InventoryTests () =
         // Assert
         Assert.IsTrue(actual.IsNone);
         Assert.AreEqual(None, actual);
+
+    [<TestMethod>]
+    member this.getItem_WithDifferentCasedItemName_ReturnsNone () =
+        // Arrange
+        let itemNameInInventory = "Iron Ore"
+        let itemNameToRetrieve = "iron ore"
+        let oreItem = Ore(Ore.IronOre, 10)
+        let inventoryItemQuantity = {
+            Name = itemNameInInventory
+            Item = oreItem
+            Quantity = 10
+        }
+        let inventory : Inventory.T =
+            Map.ofList [
+                (itemNameInInventory, inventoryItemQuantity)
+            ]
+        
+        // Act
+        let actual = Inventory.getItem itemNameToRetrieve inventory
+        
+        // Assert
+        Assert.IsTrue(actual.IsNone);
+        Assert.AreEqual(None, actual);
+
+    [<TestMethod>]
+    member this.getItem_WithLeadingTrailingSpacesInItemName_ReturnsNone () =
+        // Arrange
+        let itemNameInInventory = "Iron Ore"
+        let itemNameToRetrieve = "  Iron Ore  "
+        let oreItem = Ore(Ore.IronOre, 10)
+        let inventoryItemQuantity = {
+            Name = itemNameInInventory
+            Item = oreItem
+            Quantity = 10
+        }
+        let inventory : Inventory.T =
+            Map.ofList [
+                (itemNameInInventory, inventoryItemQuantity)
+            ]
+        
+        // Act
+        let actual = Inventory.getItem itemNameToRetrieve inventory
+        
+        // Assert
+        Assert.IsTrue(actual.IsNone);
+        Assert.AreEqual(None, actual);
+
+    [<TestMethod>]
+    member this.removeItem_WithExistingItem_RemovesItem () =
+        // Arrange
+        let itemName = "Iron Ore"
+        let oreItem = Ore(Ore.IronOre, 10)
+        let inventoryItemQuantity = {
+            Name = itemName
+            Item = oreItem
+            Quantity = 10
+        }
+        let inventory : Inventory.T =
+            Map.ofList [
+                (itemName, inventoryItemQuantity)
+            ]
+        
+        // Act
+        let updatedInventory = inventory |> Map.remove itemName
+        let actual = Inventory.getItem itemName updatedInventory
+        
+        // Assert
+        Assert.IsTrue(actual.IsNone);
+        Assert.AreEqual(None, actual);
+        Assert.AreEqual(0, Map.count updatedInventory);
