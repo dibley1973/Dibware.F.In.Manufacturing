@@ -4,6 +4,7 @@ open Microsoft.VisualStudio.TestTools.UnitTesting
 open Dibware.F.In.Manufacturing.Domain.Types
 open Dibware.F.In.Manufacturing.Domain.Types.Mining
 open Dibware.F.In.Manufacturing.Domain.Types.Inventory
+open Dibware.F.In.Manufacturing.Domain.Behaviours
 
 /// <summary>
 /// Tests for Inventory behaviour

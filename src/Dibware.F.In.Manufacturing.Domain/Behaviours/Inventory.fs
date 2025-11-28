@@ -1,4 +1,4 @@
-﻿namespace Dibware.F.In.Manufacturing.Domain.Types
+﻿namespace Dibware.F.In.Manufacturing.Domain.Behaviours
 
 open Dibware.F.In.Manufacturing.Domain.Types.Inventory
 
