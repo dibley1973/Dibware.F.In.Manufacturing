@@ -23,8 +23,8 @@ type MiningTests () =
         let actual = Mining.getRockAtLocation(location, world)
         
         // Assert
-        Assert.IsTrue(actual.IsSome);
-        Assert.AreEqual(Rock.IronImpregnatedRock, actual.Value);
+        Assert.IsTrue(actual.IsSome)
+        Assert.AreEqual(Rock.IronImpregnatedRock, actual.Value)
 
     [<TestMethod>]
     member this.getRockAtLocation_WithNoRockPresent_ReturnsNone () =
@@ -38,8 +38,8 @@ type MiningTests () =
         let actual = Mining.getRockAtLocation(location, world)
         
         // Assert
-        Assert.IsTrue(actual.IsNone);
-        Assert.AreEqual(None, actual);
+        Assert.IsTrue(actual.IsNone)
+        Assert.AreEqual(None, actual)
 
     [<TestMethod>]
     member this.mineLocation_WithUselessRock_ReturnsNone () =
@@ -55,8 +55,8 @@ type MiningTests () =
         let actual = Mining.mineLocation(location, world, rockMiner)
         
         // Assert
-        Assert.IsTrue(actual.IsNone);
-        Assert.AreEqual(None, actual);
+        Assert.IsTrue(actual.IsNone)
+        Assert.AreEqual(None, actual)
 
     [<TestMethod>]
     member this.mineLocation_WithVoidOfAnyRock_ReturnsNone () =
@@ -72,8 +72,8 @@ type MiningTests () =
         let actual = Mining.mineLocation(location, world, rockMiner)
         
         // Assert
-        Assert.IsTrue(actual.IsNone);
-        Assert.AreEqual(None, actual);
+        Assert.IsTrue(actual.IsNone)
+        Assert.AreEqual(None, actual)
 
     [<TestMethod>]
     member this.mineLocation_WithIronImpregnatedRock_ReturnsSomeIronOre () =
@@ -89,5 +89,5 @@ type MiningTests () =
         let actual = Mining.mineLocation(location, world, rockMiner)
         
         // Assert
-        Assert.IsTrue(actual.IsSome);
-        Assert.AreEqual(Rock.IronImpregnatedRock, actual.Value);
+        Assert.IsTrue(actual.IsSome)
+        Assert.AreEqual(Rock.IronImpregnatedRock, actual.Value)
