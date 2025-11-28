@@ -44,23 +44,26 @@ module Inventory =
     /// </summary>
     let addOrUpdateItem (item: InventoryItemQuantity) (inventory: T) : T =
         let itemExists = Map.containsKey item.Name inventory
-        if (itemExists) then
-            // Update existing entry
+        
+        if (itemExists) then // Update existing entry
             let existingItem = Map.find item.Name inventory
             let updatedQuantity = existingItem.Quantity + item.Quantity
             let updatedItem = { existingItem with Quantity = updatedQuantity }
             let updatedInventory = removeItem item.Name inventory
             let resultInventory = Map.add item.Name updatedItem updatedInventory
             resultInventory
-        else
-            // Add new entry
+
+        else // Add new entry
             let resultInventory = Map.add item.Name item inventory
             resultInventory
 
-
-
-    // Example of a function to check stock level
-    let checkStock name (inventory: T) : int =
+    /// <summary>
+    /// Checks the stock level of an inventory item by name.
+    /// </summary>
+    /// <param name="name">The name of the item to check.</param>
+    /// <param name="inventory">The inventory to check.</param>
+    /// <returns>The quantity of the item in stock, or 0 if not found.</returns>
+    let checkStockLevel name (inventory: T) : int =
         match getItem name inventory with
         | Some item -> item.Quantity
         | None -> 0

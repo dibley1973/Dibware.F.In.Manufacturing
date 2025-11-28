@@ -273,3 +273,47 @@ type InventoryTests () =
         Assert.AreEqual(expectedQuantity, actual.Value.Quantity);
         Assert.AreEqual(1, Map.count updatedInventory);
         Assert.AreNotSame(inventory, updatedInventory);
+
+    [<TestMethod>]
+    member this.checkStockLevel_WithExistingItem_ReturnsQuantity () =
+        // Arrange
+        let itemName = "Iron Ore"
+        let expectedQuantity = 15
+        let oreItem = Ore(Ore.IronOre)
+        let inventoryItemQuantity = {
+            Name = itemName
+            Item = oreItem
+            Quantity = expectedQuantity
+        }
+        let inventory : Inventory.T =
+            Map.ofList [
+                (itemName, inventoryItemQuantity)
+            ]
+        
+        // Act
+        let actualQuantity = Inventory.checkStockLevel itemName inventory
+        
+        // Assert
+        Assert.AreEqual(expectedQuantity, actualQuantity);
+
+    [<TestMethod>]
+    member this.checkStockLevel_WithNonExistingItem_ReturnsZero () =
+        // Arrange
+        let existingItemName = "Iron Ore"
+        let nonExistingItemName = "Gold Ore"
+        let oreItem = Ore(Ore.IronOre)
+        let inventoryItemQuantity = {
+            Name = existingItemName
+            Item = oreItem
+            Quantity = 10
+        }
+        let inventory : Inventory.T =
+            Map.ofList [
+                (existingItemName, inventoryItemQuantity)
+            ]
+            
+        // Act
+        let actualQuantity = Inventory.checkStockLevel nonExistingItemName inventory
+            
+        // Assert
+        Assert.AreEqual(0, actualQuantity);
