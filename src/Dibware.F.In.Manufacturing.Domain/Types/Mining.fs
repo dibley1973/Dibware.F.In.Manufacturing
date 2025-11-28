@@ -28,5 +28,17 @@ type Ore =
 /// Describes a mining operation that extracts raw materials from the earth.
 /// </summary>
 type Mine = 
+    /// <summary>
+    /// A surface mine where minerals are extracted from an open pit.
+    /// </summary>
     | OpenPitMine
+
+    /// <summary>
+    /// An underground mine where minerals are extracted through tunnels.
+    /// </summary>
     | UndergroundShaftMine
+    
+    /// <summary>
+    /// A "mine" that extracts oil or natural gas through drilling.
+    /// </summary>
+    | DrillingRig
