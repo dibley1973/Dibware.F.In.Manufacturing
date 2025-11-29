@@ -12,7 +12,10 @@
     <Compile Include="Types\Mining.fs" />
     <Compile Include="Types\Terraforming.fs" />
     <Compile Include="Types\Inventory.fs" />
+    <Compile Include="Types\Manufacturing.fs" />
+    <Compile Include="Types\Recipies\Metals.fs" />
     <Compile Include="Behaviours\Inventory.fs" />
+    <Compile Include="Behaviours\Operations\Alloying.fs" />
     <Compile Include="Behaviours\Operations\Surveying.fs" />
     <Compile Include="Behaviours\Operations\OreExtraction.fs" />
     <Compile Include="Behaviours\Operations\Smelting.fs" />
