@@ -1,4 +1,4 @@
-﻿namespace Dibware.F.In.Manufacturing.Domain.UnitTests
+namespace Dibware.F.In.Manufacturing.Domain.UnitTests
 
 open Microsoft.VisualStudio.TestTools.UnitTesting
 open Dibware.F.In.Manufacturing.Domain.Behaviours.Generators.Terraforming
@@ -66,4 +66,4 @@ type TerraformingTests () =
         // Assert
         Assert.IsNotNull(actual)
         Assert.AreEqual(expectedFlattenedLength, flattenedActual.Length)
-        Assert.IsTrue(actualPreferredRockCount >= expectedMinimumPreferredRockCount)
+        Assert.IsTrue(actualPreferredRockCount >= expectedMinimumPreferredRockCount, $"Expected: '{expectedMinimumPreferredRockCount}', Actual: '{actualPreferredRockCount}'")
