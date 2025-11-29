@@ -12,3 +12,7 @@ type Recipe = {
     Time: float
 }
 
+type RecipeElement = {
+    Material: Material
+    Quantity: int
+}
