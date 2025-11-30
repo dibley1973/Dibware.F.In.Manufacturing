@@ -5,3 +5,9 @@ namespace Dibware.F.In.Manufacturing.Domain.Types.ProcessingPlants
 /// </summary>
 type SmeltingPlant = 
     | IronOreSmelter
+
+/// <summary>
+/// Describes plants that Mill processed materials into finished goods.
+/// </summary>
+type MillingPlant =
+    | SteelMill
