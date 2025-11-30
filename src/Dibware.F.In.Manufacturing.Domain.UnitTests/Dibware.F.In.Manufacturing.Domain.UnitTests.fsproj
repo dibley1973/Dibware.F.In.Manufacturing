@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="BehaviourTests\Inventory_Brian_Version_Tests.fs" />
+    <Compile Include="BehaviourTests\InventoryTests.fs" />
     <Compile Include="BehaviourTests\InventoryTests_ToDelete.fs" />
     <Compile Include="BehaviourTests\GeneratorTests\TerraformingTests.fs" />
     <Compile Include="BehaviourTests\OperationsTests\SurveyingTests.fs" />
