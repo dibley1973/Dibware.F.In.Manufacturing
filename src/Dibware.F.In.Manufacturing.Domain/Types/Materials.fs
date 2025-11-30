@@ -48,12 +48,6 @@ by Brian Berns.
 //    | CompositeFibers of Material
 
 ///// <summary>
-///// Describes plant that Smelts ores into processed materials.
-///// </summary>
-//type SmeltingPlant = 
-//    | IronOreSmelter
-
-///// <summary>
 ///// Describes a processed material used in manufacturing.
 ///// </summary>
 //type ProcessedMaterial =
