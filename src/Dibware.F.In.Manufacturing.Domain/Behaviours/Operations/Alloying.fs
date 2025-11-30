@@ -6,6 +6,7 @@ open Dibware.F.In.Manufacturing.Domain.Types.ProcessingPlants
 
 /// <summary>
 /// Represents alloying operations in manufacturing.
+/// </summary>
 module Alloying =
     let steelIngot = SteelIngot |> RefinedIngot |> Refined
 
