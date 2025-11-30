@@ -1,9 +1,10 @@
-namespace Dibware.F.In.Manufacturing.Domain.Types.Materials_Alternative_Brian
+namespace Dibware.F.In.Manufacturing.Domain.Types.Materials
 
 (*
+This is a modified version of my origianlal material type definitions, created
+from a suggestion by Brian Berns, and shared on Stack Overflow.
 Source - https://stackoverflow.com/a/79833562
 Posted by Brian Berns, modified by community. See post 'Timeline' for change history
-Retrieved 2025-11-30, License - CC BY-SA 4.0
 *)
 
 type Ore =
@@ -25,7 +26,7 @@ type RawMaterial =
     | RawGas of Gas
     | RawTimber of Timber
 
-type Rock =
+type Ground =
     | IronImpregnatedRock
     | CoalImpregnatedRock
     | CopperImpregnatedRock
@@ -37,9 +38,17 @@ type Rock =
 
 type Ingot =
     | IronIngot
-    | SomeOtherIngot
+    | SteelIngot
 
 type Lumber = Planks
+
+type Sheet =
+    | IronSheet
+    | SteelSheet
+
+type ProcessedMaterial = 
+    | IronSheet of Sheet
+    | SteelSheet of Sheet
 
 type RefinedMaterial =
     | RefinedIngot of Ingot
@@ -48,3 +57,4 @@ type RefinedMaterial =
 type Material =
     | Raw of RawMaterial
     | Refined of RefinedMaterial
+    | Rock of Ground
