@@ -17,7 +17,7 @@
     <Compile Include="Types\Manufacturing.fs" />
     <Compile Include="Types\Recipies\Metals.fs" />
     <Compile Include="Behaviours\Inventory_Alternative_Brian.fs" />
-    <Compile Include="Behaviours\Inventory.fs" />
+    <Compile Include="Behaviours\Inventory_ToDelete.fs" />
     <Compile Include="Behaviours\Operations\Alloying.fs" />
     <Compile Include="Behaviours\Operations\Surveying.fs" />
     <Compile Include="Behaviours\Operations\OreExtraction.fs" />
