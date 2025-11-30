@@ -7,9 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Types\Materials_Alternative_Brian.fs" />
+    <Compile Include="Types\ProcessingPlants.fs" />
     <Compile Include="Types\Measurements.fs" />
     <Compile Include="Types\Materials.fs" />
+    <Compile Include="Types\Materials_ToDelete.fs" />
     <Compile Include="Types\Mining.fs" />
     <Compile Include="Types\Terraforming.fs" />
     <Compile Include="Types\Inventory.fs" />

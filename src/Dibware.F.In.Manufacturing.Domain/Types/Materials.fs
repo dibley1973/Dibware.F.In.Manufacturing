@@ -1,89 +1,60 @@
 namespace Dibware.F.In.Manufacturing.Domain.Types.Materials
 
-module DeleteMeLater =
-    let x = 42
 (*
-This module is to be deleted later.
-It contains material type definitions that
-are to be replaced by the alternative
-material type definitions provided
-by Brian Berns.
+This is a modified version of my origianlal material type definitions, created
+from a suggestion by Brian Berns, and shared on Stack Overflow.
+Source - https://stackoverflow.com/a/79833562
+Posted by Brian Berns, modified by community. See post 'Timeline' for change history
 *)
 
-///// <summary>
-///// Describes the base for any material used in manufacturing.
-///// </summary>
-//type Material = {
-//    /// <summary>
-//    /// The name of the material
-//    /// </summary>
-//    Name: string
-//}
+type Ore =
+    | IronOre
+    | Coal
+    | CopperOre
+    | GoldOre
+    | SilverOre
 
-///// <summary>
-///// Describes the type of raw, unprocessed material
-///// </summary>
-//type RawMaterial =
-//    | Ore    //of Material
-//        //| IronOre //of Material
-//        //| Coal    //of Material
-//        //| CopperOre of Material
-//        //| AluminumOre of Material
-//        //| GoldOre of Material
-//        //| SilverOre of Material
-//    | Oil    of Material
-//        | CrudeOil of Material
-//    | Gas    of Material
-//        | NaturalGas of Material
-//    | Timber of Material
-//        | Logs of Material
+type Oil = CrudeOil
 
-///// <summary>
-///// Describes the type of processed / refined material
-///// </summary>
-//type PrimaryMaterialType =
-//    | MetalIngot of Material
-//    | PlasticPellets of Material
-//    | Logs of Material
-//    | CompositeFibers of Material
+type Gas = NaturalGas
 
-///// <summary>
-///// Describes a processed material used in manufacturing.
-///// </summary>
-//type ProcessedMaterial =
-//    | Iron of Material
-//    | Steel of Material
-//    | Plastic of Material
+type Timber = Logs
 
-///// <summary>
-///// Describes a component manufacturedfrom processed materials.
-///// </summary>
-//type BasicComponent = {
-//    Name: string
-//    Materials: ProcessedMaterial list
-//}
+type RawMaterial =
+    | RawOre of Ore
+    | RawOil of Oil
+    | RawGas of Gas
+    | RawTimber of Timber
 
-//type AssembledComponent = {
-//    Name: string
-//    SubComponents: BasicComponent list
-//}
+type Ground =
+    | IronImpregnatedRock
+    | CoalImpregnatedRock
+    | CopperImpregnatedRock
+    | GasShale
+    | OilShale
+    | Spoil
+    | Useless
+    | VoidOfAnyRock
 
-//type Component =
-//    | Basic of BasicComponent
-//    | Assembled of AssembledComponent
+type Ingot =
+    | IronIngot
+    | SteelIngot
 
+type Lumber = Planks
 
-//type Product = {
-//    Name: string
-//    Components: Component list
-//}
+type Sheet =
+    | IronSheet
+    | SteelSheet
 
-//type MaterialType =
-//    | Metal
-//    | Plastic
-//    | Wood
-//    | Composite
+type ProcessedMaterial = 
+    | IronSheet of Sheet
+    | SteelSheet of Sheet
 
-//type MetalIngotType =
-//    | IronIngot // of ProcessedMaterialType.MetalIngot
-//    | SteelIngot //of ProcessedMaterialType.MetalIngot
+type RefinedMaterial =
+    | RefinedIngot of Ingot
+    | RefinedLumber of Lumber
+
+type Material =
+    | Raw of RawMaterial
+    | Refined of RefinedMaterial
+    | Rock of Ground
