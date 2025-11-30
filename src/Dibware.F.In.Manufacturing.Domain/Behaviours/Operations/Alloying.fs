@@ -2,12 +2,34 @@ namespace Dibware.F.In.Manufacturing.Domain.Behaviours.Operations
 
 open Dibware.F.In.Manufacturing.Domain.Types.Materials
 open Dibware.F.In.Manufacturing.Domain.Types.Manufacturing
+open Dibware.F.In.Manufacturing.Domain.Types.ProcessingPlants
 
-//module Alloying =
-//    let makeSteel : Recipe = {
-//        Input = Map.ofList<Material, int> [ (SteelIngot, 2) ]
-//        Output = Map.ofList<Material, int> [ (O2.Coal2, 1) ]
-//        Time = 5.0 // seconds
-//    }
+/// <summary>
+/// Represents alloying operations in manufacturing.
+module Alloying =
+    let steelIngot = SteelIngot |> RefinedIngot |> Refined
+
+    /// <summary>
+    /// Function to make steel using a steel mill, a recipe, and a material list.
+    /// </summary>
+    let tryMakeSteel steelMill (recipe: Recipe) (materialList: MaterialList): Material option =
+        match steelMill with
+        | SteelMill ->
+            match recipe with
+            | steelRecipe -> 
+                // Check if the materialList contains the required input materials in the recipe
+                let hasRequiredMaterials =
+                    steelRecipe.Input
+                    |> Map.forall (fun material quantity ->
+                        match Map.tryFind material materialList with
+                        | Some availableQuantity -> availableQuantity >= quantity
+                        | None -> false)
+                if hasRequiredMaterials then
+                    steelIngot |> Some
+                else
+                    None
+            | _ -> None
+        | _ -> None
+
 
 
