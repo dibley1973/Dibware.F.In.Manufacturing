@@ -1,7 +1,6 @@
 namespace Dibware.F.In.Manufacturing.Domain.Behaviours
 
-open Dibware.F.In.Manufacturing.Domain.Types.Materials_Alternative_Brian
-
+open Dibware.F.In.Manufacturing.Domain.Types.Materials
 (*
 Source - https://stackoverflow.com/a/79833562
 Posted by Brian Berns, modified by community. See post 'Timeline' for change history
