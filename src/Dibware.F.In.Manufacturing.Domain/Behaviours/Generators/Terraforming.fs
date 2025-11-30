@@ -34,7 +34,7 @@ module Terraforming =
     let public getPreferredRockWithBias (biasPercentage: int) (preferredRock: Rock) : Rock =
         let randomValue = System.Random().Next(0, 100)
         
-        if randomValue < biasPercentage then
+        if randomValue <= biasPercentage then
             preferredRock
         else
             getRandomRock()
