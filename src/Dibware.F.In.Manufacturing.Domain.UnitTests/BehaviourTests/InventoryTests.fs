@@ -3,6 +3,7 @@ namespace Dibware.F.In.Manufacturing.Domain.UnitTests
 open Microsoft.VisualStudio.TestTools.UnitTesting
 open Dibware.F.In.Manufacturing.Domain.Behaviours
 open Dibware.F.In.Manufacturing.Domain.Types.Materials
+open Dibware.F.In.Manufacturing.Domain.Types.Mining
 
 /// <summary>
 /// Tests for Inventory behaviour

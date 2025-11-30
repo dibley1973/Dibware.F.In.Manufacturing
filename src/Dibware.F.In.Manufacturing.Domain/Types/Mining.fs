@@ -1,6 +1,6 @@
 namespace Dibware.F.In.Manufacturing.Domain.Types.Mining
 
-open Dibware.F.In.Manufacturing.Domain.Types.Materials
+//open Dibware.F.In.Manufacturing.Domain.Types.Materials
 
 /// <summary>
 /// Describes different types of rocks that contain ores.
