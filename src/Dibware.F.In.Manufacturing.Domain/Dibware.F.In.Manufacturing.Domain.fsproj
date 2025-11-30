@@ -15,7 +15,7 @@
     <Compile Include="Types\Terraforming.fs" />
     <Compile Include="Types\Inventory_ToDelete.fs" />
     <Compile Include="Types\Manufacturing.fs" />
-    <Compile Include="Types\Recipies\Metals.fs" />
+    <Compile Include="Types\Recipies\Alloying.fs" />
     <Compile Include="Behaviours\Inventory.fs" />
     <Compile Include="Behaviours\Inventory_ToDelete.fs" />
     <Compile Include="Behaviours\Operations\Alloying.fs" />
