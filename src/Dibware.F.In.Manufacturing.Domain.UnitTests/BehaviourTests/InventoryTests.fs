@@ -1,16 +1,8 @@
 namespace Dibware.F.In.Manufacturing.Domain.UnitTests
 
 open Microsoft.VisualStudio.TestTools.UnitTesting
-//open Dibware.F.In.Manufacturing.Domain.Types
-//open Dibware.F.In.Manufacturing.Domain.Types.Mining
-//open Dibware.F.In.Manufacturing.Domain.Types.Inventory
 open Dibware.F.In.Manufacturing.Domain.Behaviours
-open Dibware.F.In.Manufacturing.Domain.Types.Materials_Alternative_Brian
-
-(*
-These currently do not compile correctly, so I need to fix that, but I am not sure how to do so at the moment!
-See note above `Inventory_Alternative_BasedUponBrians` module .
-*)
+open Dibware.F.In.Manufacturing.Domain.Types.Materials
 
 /// <summary>
 /// Tests for Inventory behaviour
