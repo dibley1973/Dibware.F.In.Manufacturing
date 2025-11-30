@@ -8,14 +8,14 @@ Posted by Brian Berns, modified by community. See post 'Timeline' for change his
 Retrieved 2025-11-30, License - CC BY-SA 4.0
 *)
 
-module Inventory_Alternative_Brian =
-    let inventory =
-        [
-            Raw (RawOre IronOre)
-            Raw (RawOil CrudeOil)
-            Raw (RawGas NaturalGas)
-            Refined (RefinedIngot IronIngot)
-        ]
+//module Inventory_Alternative_Brian =
+    //let inventory =
+    //    [
+    //        Raw (RawOre IronOre)
+    //        Raw (RawOil CrudeOil)
+    //        Raw (RawGas NaturalGas)
+    //        Refined (RefinedIngot IronIngot)
+    //    ]
 
 (*
 I now need to try an implement Brian Berns' material types into an inventory system,
