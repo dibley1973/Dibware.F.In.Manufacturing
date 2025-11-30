@@ -25,9 +25,9 @@ module Smelting =
     /// <summary>
     /// A function that tries to smelt the specified ore using the specified smelting plant.
     /// </summary>
-    let public tryToSmeltOre (plant: SmeltingPlant) (rawMaterial: Ore) : ProcessedMaterial option =
+    let public tryToSmeltOre (plant: SmeltingPlant) (rawMaterial: Ore) : Ingot option =
         match plant, rawMaterial with
-        | IronOreSmelter, IronOre -> Iron { Name = "Iron Ingot" } |> Some
+        | IronOreSmelter, IronOre -> Ingot.IronIngot (*{ Name = "Iron Ingot" } *) |> Some
         | _ -> None
 
     /// <summary>
