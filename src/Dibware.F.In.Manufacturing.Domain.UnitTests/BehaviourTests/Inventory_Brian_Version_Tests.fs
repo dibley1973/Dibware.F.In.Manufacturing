@@ -21,7 +21,7 @@ type Inventory_Brian_Version_Tests () =
     member this.createEmptyInventory_ReturnsEmptyMap () =
         // Arrange
         // Act
-        let actual = Inventory_Alternative_BasedUponBrians.createEmptyInventory()
+        let actual = Inventory.createEmptyInventory()
         
         // Assert
         Assert.AreEqual(Map.empty, actual);
@@ -30,10 +30,10 @@ type Inventory_Brian_Version_Tests () =
     member this.getItem_WithEmptyInventory_ReturnsNone () =
            // Arrange
             let itemName = "Iron Ore"
-            let inventory : Inventory_Alternative_BasedUponBrians.T = Inventory_Alternative_BasedUponBrians.createEmptyInventory()
+            let inventory : Inventory.T = Inventory.createEmptyInventory()
             
             // Act
-            let actual = Inventory_Alternative_BasedUponBrians.getItem itemName inventory
+            let actual = Inventory.getItem itemName inventory
             
             // Assert
             Assert.IsTrue(actual.IsNone);
@@ -45,18 +45,18 @@ type Inventory_Brian_Version_Tests () =
         let itemName = "Iron Ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity = {
+        let inventoryItemQuantity : Inventory.InventoryItemQuantity = {
             Name = itemName
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (itemName, inventoryItemQuantity)
             ]
         
         // Act
-        let actual = Inventory_Alternative_BasedUponBrians.getItem itemName inventory
+        let actual = Inventory.getItem itemName inventory
         
         // Assert
         Assert.IsTrue(actual.IsSome);
@@ -69,18 +69,18 @@ type Inventory_Brian_Version_Tests () =
         let nameOfItemThatDoesNotExist = "Gold Ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = nameOfItemThatExists
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (nameOfItemThatExists, inventoryItemQuantity)
             ]
         
         // Act
-        let actual = Inventory_Alternative_BasedUponBrians.getItem nameOfItemThatDoesNotExist inventory
+        let actual = Inventory.getItem nameOfItemThatDoesNotExist inventory
         
         // Assert
         Assert.IsTrue(actual.IsNone);
@@ -93,18 +93,18 @@ type Inventory_Brian_Version_Tests () =
         let itemNameToRetrieve = "iron ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = itemNameInInventory
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (itemNameInInventory, inventoryItemQuantity)
             ]
         
         // Act
-        let actual = Inventory_Alternative_BasedUponBrians.getItem itemNameToRetrieve inventory
+        let actual = Inventory.getItem itemNameToRetrieve inventory
         
         // Assert
         Assert.IsTrue(actual.IsNone);
@@ -117,18 +117,18 @@ type Inventory_Brian_Version_Tests () =
         let itemNameToRetrieve = "  Iron Ore  "
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = itemNameInInventory
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (itemNameInInventory, inventoryItemQuantity)
             ]
         
         // Act
-        let actual = Inventory_Alternative_BasedUponBrians.getItem itemNameToRetrieve inventory
+        let actual = Inventory.getItem itemNameToRetrieve inventory
         
         // Assert
         Assert.IsTrue(actual.IsNone);
@@ -140,19 +140,19 @@ type Inventory_Brian_Version_Tests () =
         let itemName = "Iron Ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = itemName
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (itemName, inventoryItemQuantity)
             ]
         
         // Act
         let updatedInventory = inventory |> Map.remove itemName
-        let actual = Inventory_Alternative_BasedUponBrians.getItem itemName updatedInventory
+        let actual = Inventory.getItem itemName updatedInventory
         
         // Assert
         Assert.IsTrue(actual.IsNone);
@@ -167,19 +167,19 @@ type Inventory_Brian_Version_Tests () =
         let nonExistingItemName = "Gold Ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = existingItemName
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (existingItemName, inventoryItemQuantity)
             ]
         
         // Act
         let updatedInventory = inventory |> Map.remove nonExistingItemName
-        let actual = Inventory_Alternative_BasedUponBrians.getItem existingItemName updatedInventory
+        let actual = Inventory.getItem existingItemName updatedInventory
         
         // Assert
         Assert.IsTrue(actual.IsSome);
@@ -191,11 +191,11 @@ type Inventory_Brian_Version_Tests () =
     member this.removeItem_FromEmptyInventory_InventoryRemainsEmpty () =
         // Arrange
         let nonExistingItemName = "Gold Ore"
-        let inventory : Inventory_Alternative_BasedUponBrians.T = Inventory_Alternative_BasedUponBrians.createEmptyInventory()
+        let inventory : Inventory.T = Inventory.createEmptyInventory()
         
         // Act
         let updatedInventory = inventory |> Map.remove nonExistingItemName
-        let actual = Inventory_Alternative_BasedUponBrians.getItem nonExistingItemName updatedInventory
+        let actual = Inventory.getItem nonExistingItemName updatedInventory
         
         // Assert
         Assert.IsTrue(actual.IsNone);
@@ -210,19 +210,19 @@ type Inventory_Brian_Version_Tests () =
         let itemNameToRemove = "iron ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = itemNameInInventory
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (itemNameInInventory, inventoryItemQuantity)
             ]
         
         // Act
         let updatedInventory = inventory |> Map.remove itemNameToRemove
-        let actual = Inventory_Alternative_BasedUponBrians.getItem itemNameInInventory updatedInventory
+        let actual = Inventory.getItem itemNameInInventory updatedInventory
         
         // Assert
         Assert.IsTrue(actual.IsSome);
@@ -236,16 +236,16 @@ type Inventory_Brian_Version_Tests () =
         let itemName = "Iron Ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantityToAdd  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantityToAdd  : Inventory.InventoryItemQuantity= {
             Name = itemName
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T = Inventory_Alternative_BasedUponBrians.createEmptyInventory()
+        let inventory : Inventory.T = Inventory.createEmptyInventory()
         
         // Act
-        let updatedInventory = Inventory_Alternative_BasedUponBrians.addOrUpdateItem inventoryItemQuantityToAdd inventory
-        let actual = Inventory_Alternative_BasedUponBrians.getItem itemName updatedInventory
+        let updatedInventory = Inventory.addOrUpdateItem inventoryItemQuantityToAdd inventory
+        let actual = Inventory.getItem itemName updatedInventory
         
         // Assert
         Assert.IsTrue(actual.IsSome);
@@ -262,24 +262,24 @@ type Inventory_Brian_Version_Tests () =
         let expectedQuantity = originalQuantity + newQuantity
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let initialInventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let initialInventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = itemName
             Item = oreItem
             Quantity = originalQuantity
         }
-        let updatedInventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let updatedInventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = itemName
             Item = oreItem
             Quantity = newQuantity
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (itemName, initialInventoryItemQuantity)
             ]
         
         // Act
-        let updatedInventory = Inventory_Alternative_BasedUponBrians.addOrUpdateItem updatedInventoryItemQuantity inventory
-        let actual = Inventory_Alternative_BasedUponBrians.getItem itemName updatedInventory
+        let updatedInventory = Inventory.addOrUpdateItem updatedInventoryItemQuantity inventory
+        let actual = Inventory.getItem itemName updatedInventory
         
         // Assert
         Assert.IsTrue(actual.IsSome);
@@ -295,18 +295,18 @@ type Inventory_Brian_Version_Tests () =
         let expectedQuantity = 15
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = itemName
             Item = oreItem
             Quantity = expectedQuantity
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (itemName, inventoryItemQuantity)
             ]
         
         // Act
-        let actualQuantity = Inventory_Alternative_BasedUponBrians.checkStockLevel itemName inventory
+        let actualQuantity = Inventory.checkStockLevel itemName inventory
         
         // Assert
         Assert.AreEqual(expectedQuantity, actualQuantity);
@@ -318,18 +318,18 @@ type Inventory_Brian_Version_Tests () =
         let nonExistingItemName = "Gold Ore"
         let ore = Ore.IronOre
         let oreItem = Raw (RawOre ore)
-        let inventoryItemQuantity  : Inventory_Alternative_BasedUponBrians.InventoryItemQuantity= {
+        let inventoryItemQuantity  : Inventory.InventoryItemQuantity= {
             Name = existingItemName
             Item = oreItem
             Quantity = 10
         }
-        let inventory : Inventory_Alternative_BasedUponBrians.T =
+        let inventory : Inventory.T =
             Map.ofList [
                 (existingItemName, inventoryItemQuantity)
             ]
             
         // Act
-        let actualQuantity = Inventory_Alternative_BasedUponBrians.checkStockLevel nonExistingItemName inventory
+        let actualQuantity = Inventory.checkStockLevel nonExistingItemName inventory
             
         // Assert
         Assert.AreEqual(0, actualQuantity);

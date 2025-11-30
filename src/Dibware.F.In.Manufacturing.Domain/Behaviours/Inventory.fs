@@ -27,7 +27,7 @@ so I need to fix that, but I am not sure how to do so at the moment!
 /// <summary>
 /// Using structures from Brian Berns' alternative material type definitions.
 /// </summary>
-module  Inventory_Alternative_BasedUponBrians =
+module  Inventory =
     /// <summary>
     /// Represents the name of an item in the inventory.
     /// </summary>
