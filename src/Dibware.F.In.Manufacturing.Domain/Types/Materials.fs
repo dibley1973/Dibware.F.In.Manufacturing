@@ -22,16 +22,25 @@ type RawMaterial =
     | RawTimber of Timber
 
 type Ground =
-    | IronImpregnatedRock
+    | BauxiteImpregnatedRock
     | CoalImpregnatedRock
     | CopperImpregnatedRock
+    | IronImpregnatedRock
     | GasShale
     | OilShale
     | Spoil
     | Useless
     | VoidOfAnyRock
 
+type Chemical =
+    | CausticSoda
+
+type Powder =
+    | AluminaPowder
+
 type Ingot =
+    | AlluminiumIngot
+    | CopperIngot
     | IronIngot
     | SteelIngot
 
@@ -48,6 +57,7 @@ type ProcessedMaterial =
 type RefinedMaterial =
     | RefinedIngot of Ingot
     | RefinedLumber of Lumber
+    | RefinedPowder of Powder
 
 type Material =
     | Raw of RawMaterial
