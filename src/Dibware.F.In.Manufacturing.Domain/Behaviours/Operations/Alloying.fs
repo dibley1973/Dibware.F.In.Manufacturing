@@ -13,8 +13,8 @@ module Alloying =
     /// <summary>
     /// Function to make steel using a steel mill, a recipe, and a material list.
     /// </summary>
-    let tryMakeSteel steelMill (recipe: Recipe) (materialList: MaterialList): Material option =
-        match steelMill with
+    let tryMakeSteel millingPlant (recipe: Recipe) (materialList: MaterialList): Material option =
+        match millingPlant with
         | SteelMill ->
             match recipe with
             | steelRecipe -> 
