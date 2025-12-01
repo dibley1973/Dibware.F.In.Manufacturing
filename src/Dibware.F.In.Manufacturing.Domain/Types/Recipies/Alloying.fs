@@ -22,8 +22,12 @@ module Alloying =
         TimeInSeconds = 5.0 // seconds
     }
 
-    //let aluminiumRecipe : Recipe = {
-    //    Input = Map.ofList<Material, int> [ (Powder.AluminaPowder |> RefinedPowder |> Refined, 3); (Chemical.CausticSoda, 1) ]
-    //    Output = Map.ofList<Material, int> [ (AlluminiumIngot |> RefinedIngot |> Refined, 1) ]
-    //    TimeInSeconds = 4.0 // seconds
-    //}
+    /// <summary>
+    /// The recipe to make aluminium ingots from alumina powder and caustic soda.
+    /// Takes 3 alumina powder and 1 caustic soda to produce 1 aluminium ingot in 4 seconds.
+    /// </summary>
+    let aluminiumRecipe : Recipe = {
+        Input = Map.ofList<Material, int> [ (Powder.AluminaPowder |> RefinedPowder |> Refined, 3); (Chemical.CausticSoda |> SynthesizedChemical |> Chemical, 1) ]
+        Output = Map.ofList<Material, int> [ (AlluminiumIngot |> RefinedIngot |> Refined, 1) ]
+        TimeInSeconds = 4.0 // seconds
+    }
