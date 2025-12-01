@@ -19,6 +19,7 @@
     <Compile Include="BehaviourTests\InventoryTests.fs" />
     <Compile Include="BehaviourTests\InventoryTests_ToDelete.fs" />
     <Compile Include="BehaviourTests\GeneratorTests\TerraformingTests.fs" />
+    <Compile Include="BehaviourTests\OperationsTests\AlloyingTests.fs" />
     <Compile Include="BehaviourTests\OperationsTests\SurveyingTests.fs" />
     <Compile Include="BehaviourTests\OperationsTests\OreExtractionTests.fs" />
     <Compile Include="BehaviourTests\OperationsTests\MiningTests.fs" />
