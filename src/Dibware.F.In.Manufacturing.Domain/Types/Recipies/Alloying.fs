@@ -19,8 +19,8 @@ module Alloying =
     /// Takes 2 iron ingots and 1 coal to produce 1 steel ingot in 5 seconds.
     /// </summary>
     let steelRecipe : Recipe = {
-        Input = Map.ofList<Material, int> [ (coal, 1); (ironIngot , 2) ]
-        Output = Map.ofList<Material, int> [ (steelIngot, 1) ]
+        Input = MaterialList [ (coal, 1); (ironIngot , 2) ]
+        Output = MaterialList [ (steelIngot, 1) ]
         TimeInSeconds = 5.0 // seconds
     }
 
@@ -29,7 +29,7 @@ module Alloying =
     /// Takes 3 alumina powder and 1 caustic soda to produce 1 aluminium ingot in 4 seconds.
     /// </summary>
     let aluminiumRecipe : Recipe = {
-        Input = Map.ofList<Material, int> [ (aluminaPowder, 3); (causticSoda, 1) ]
-        Output = Map.ofList<Material, int> [ (aluminiumIngot, 1) ]
+        Input = MaterialList [ (aluminaPowder, 3); (causticSoda, 1) ]
+        Output = MaterialList [ (aluminiumIngot, 1) ]
         TimeInSeconds = 4.0 // seconds
     }
