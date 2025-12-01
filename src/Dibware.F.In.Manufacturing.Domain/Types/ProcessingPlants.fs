@@ -10,4 +10,5 @@ type SmeltingPlant =
 /// Describes plants that Mill processed materials into finished goods.
 /// </summary>
 type MillingPlant =
+    | AlluminiumMill
     | SteelMill
