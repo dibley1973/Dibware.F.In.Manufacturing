@@ -59,7 +59,11 @@ type RefinedMaterial =
     | RefinedLumber of Lumber
     | RefinedPowder of Powder
 
+type SynthesizedMaterial =
+    | SynthesizedChemical of Chemical
+
 type Material =
     | Raw of RawMaterial
     | Refined of RefinedMaterial
     | Rock of Ground
+    | Chemical of SynthesizedMaterial
