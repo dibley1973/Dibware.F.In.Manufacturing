@@ -7,9 +7,11 @@ open Dibware.F.In.Manufacturing.Domain.Types.Mining
 /// <summary>
 /// Represents alloying operations in manufacturing.
 module Alloying =
-    //let aluminiumIngot = AlluminiumIngot |> RefinedIngot |> Refined
-    let ironIngot = IronIngot |> RefinedIngot |> Refined
+    let aluminaPowder = Powder.AluminaPowder |> RefinedPowder |> Refined
+    let aluminiumIngot = AlluminiumIngot |> RefinedIngot |> Refined
+    let causticSoda = Chemical.CausticSoda |> SynthesizedChemical |> Chemical
     let coal = Ore.Coal |> RawOre |> Raw
+    let ironIngot = IronIngot |> RefinedIngot |> Refined
     let steelIngot = SteelIngot |> RefinedIngot |> Refined
 
     /// <summary>
@@ -27,7 +29,7 @@ module Alloying =
     /// Takes 3 alumina powder and 1 caustic soda to produce 1 aluminium ingot in 4 seconds.
     /// </summary>
     let aluminiumRecipe : Recipe = {
-        Input = Map.ofList<Material, int> [ (Powder.AluminaPowder |> RefinedPowder |> Refined, 3); (Chemical.CausticSoda |> SynthesizedChemical |> Chemical, 1) ]
-        Output = Map.ofList<Material, int> [ (AlluminiumIngot |> RefinedIngot |> Refined, 1) ]
+        Input = Map.ofList<Material, int> [ (aluminaPowder, 3); (causticSoda, 1) ]
+        Output = Map.ofList<Material, int> [ (aluminiumIngot, 1) ]
         TimeInSeconds = 4.0 // seconds
     }
